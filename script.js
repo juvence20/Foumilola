@@ -193,7 +193,7 @@ function changePhoto(direction) {
   imgElement.style.transform = 'scale(0.95)';
 
   setTimeout(() => {
-    imgElement.src = `Images/photo${currentPhotoIndex}.jpg`;
+    imgElement.src = `images/photo${currentPhotoIndex}.jpg`;
     document.getElementById('photoCounter').textContent = `Photo ${currentPhotoIndex} / ${totalPhotos}`;
     imgElement.style.opacity = '1';
     imgElement.style.transform = 'scale(1)';
