@@ -1,0 +1,265 @@
+/* ==========================================================================
+   VARIABLES & PALETTE NEUMORPHISME BLEU
+   ========================================================================== */
+:root {
+  --bg-color: #BDD8E9;
+  --text-dark: #001D39;
+  --text-mid: #0A4174;
+  --teal-blue: #4E8EA2;
+  
+  /* Ombres Neumorphiques 3D Soft */
+  --neu-flat: 8px 8px 16px #9cb8ca, -8px -8px 16px #def8ff;
+  --neu-inset: inset 5px 5px 10px #9cb8ca, inset -5px -5px 10px #def8ff;
+  --neu-btn: 6px 6px 12px #9cb8ca, -6px -6px 12px #def8ff;
+  --neu-active: inset 3px 3px 6px #9cb8ca, inset -3px -3px 6px #def8ff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Empêche le scroll manuel pour garder l'effet application */
+}
+
+/* ==========================================================================
+   LECTEUR MUSIQUE FIXE
+   ========================================================================== */
+.music-bar-fixed {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 400px;
+  background: var(--bg-color);
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: var(--neu-flat);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.music-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.music-btn {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: none;
+  background: var(--bg-color);
+  box-shadow: var(--neu-btn);
+  cursor: pointer;
+  color: var(--text-dark);
+}
+
+.music-btn:active { box-shadow: var(--neu-active); }
+
+/* ==========================================================================
+   GESTION DES ÉCRANS FULLSCREEN (MOBILE FIRST)
+   ========================================================================== */
+.app-viewport {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen {
+  min-height: 100vh;
+  width: 100%;
+  display: none; /* Caches par défaut */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px 20px 20px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.screen.active {
+  display: flex;
+  opacity: 1;
+}
+
+/* ==========================================================================
+   CARTES ET BOUTONS NEUMORPHIQUES
+   ========================================================================== */
+.neu-card {
+  background: var(--bg-color);
+  padding: 25px 20px;
+  border-radius: 30px;
+  box-shadow: var(--neu-flat);
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+}
+
+.text-center { text-align: center; }
+
+.game-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--teal-blue);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+h2, h3 { color: var(--text-dark); margin-bottom: 10px; }
+.instruction { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 20px; }
+
+.neu-btn {
+  background: var(--bg-color);
+  border: none;
+  border-radius: 18px;
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  box-shadow: var(--neu-btn);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.neu-btn:active { box-shadow: var(--neu-active); transform: scale(0.98); }
+
+.neu-btn-accent {
+  color: #fff;
+  background: linear-gradient(145deg, #49769f, #0a4174);
+  box-shadow: 4px 4px 10px #9cb8ca, -4px -4px 10px #def8ff;
+}
+
+/* ==========================================================================
+   MÉCANIQUES DES JEUX
+   ========================================================================== */
+/* Jeu 1 */
+.flee-zone {
+  position: relative;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#btn-no { position: absolute; width: 120px; transition: all 0.15s ease-out; }
+
+/* Jeu 2 */
+.scanner-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: none;
+  background: var(--bg-color);
+  box-shadow: var(--neu-btn);
+  font-size: 2rem;
+  margin: 15px auto;
+  cursor: pointer;
+}
+.scanner-progress {
+  height: 10px;
+  border-radius: 10px;
+  box-shadow: var(--neu-inset);
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.scanner-bar { height: 100%; width: 0%; background: var(--teal-blue); transition: width 0.1s linear; }
+.status-text { font-size: 0.8rem; color: var(--teal-blue); }
+
+/* Jeu 3 */
+.slots-container { display: flex; gap: 8px; margin-bottom: 15px; }
+.slot-box {
+  flex: 1;
+  height: 50px;
+  border-radius: 12px;
+  box-shadow: var(--neu-inset);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 4px;
+}
+
+/* Jeu 5 */
+.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
+.card-item {
+  aspect-ratio: 1;
+  border-radius: 15px;
+  box-shadow: var(--neu-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.card-item.flipped { box-shadow: var(--neu-inset); background: #d4e8f5; }
+
+/* ==========================================================================
+   ÉCRAN FINAL & GALERIE DE PHOTOS
+   ========================================================================== */
+.final-card { max-height: 85vh; overflow-y: auto; text-align: center; }
+.cursive-title { font-family: 'Dancing Script', cursive; font-size: 2rem; color: var(--text-mid); }
+
+.poem-container {
+  box-shadow: var(--neu-inset);
+  padding: 15px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-style: italic;
+  line-height: 1.5;
+  margin: 15px 0;
+  color: var(--text-dark);
+}
+
+.compliments-box { font-size: 0.8rem; font-weight: 600; color: var(--teal-blue); margin-bottom: 15px; }
+
+.photo-frame {
+  width: 100%;
+  height: 220px;
+  border-radius: 20px;
+  box-shadow: var(--neu-inset);
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.photo-counter {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: rgba(0,29,57,0.6);
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: 10px;
+}
+
+.gallery-controls { display: flex; gap: 10px; margin-top: 10px; }

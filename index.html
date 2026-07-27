@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Pour Mon Amour ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- LECTEUR DE MUSIQUE FLOTTANT (Reste fixe en haut) -->
+  <div class="music-bar-fixed">
+    <div class="music-info">
+      <span class="music-icon">🎵</span>
+      <span class="music-title">Notre Mélodie 💙</span>
+    </div>
+    <button class="music-btn" id="musicToggle" onclick="toggleAudio()">▶</button>
+  </div>
+  <audio id="bgMusic" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3"></audio>
+
+  <!-- CONTENEUR PRINCIPAL PLEIN ÉCRAN -->
+  <main class="app-viewport">
+
+    <!-- ÉCRAN D'ACCUEIL -->
+    <section class="screen active" id="screen-start">
+      <div class="neu-card text-center">
+        <div class="big-icon">💙</div>
+        <h2>Bienvenue mon Amour</h2>
+        <p>Une aventure interactive t'attend. Réalise chaque défi pour débloquer ton cadeau final...</p>
+        <button class="neu-btn neu-btn-accent" onclick="startExperience()">Commencer l'Aventure ✨</button>
+      </div>
+    </section>
+
+    <!-- JEU 1 : LA QUESTION PIÉGÉE -->
+    <section class="screen" id="screen-game1">
+      <div class="neu-card">
+        <div class="game-tag">Défi 1 / 5</div>
+        <h3>La Question Piégée</h3>
+        <p class="instruction">Est-ce que tu m'aimes plus que tout au monde ?</p>
+        <div class="flee-zone" id="fleeContainer">
+          <button class="neu-btn neu-btn-accent" onclick="winGame(1)">OUI ! ❤️</button>
+          <button class="neu-btn" id="btn-no" onmouseover="fleeButton()" onclick="fleeButton()" ontouchstart="fleeButton()">Non 😜</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- JEU 2 : SCANNER DE MIGNONNERIE -->
+    <section class="screen" id="screen-game2">
+      <div class="neu-card text-center">
+        <div class="game-tag">Défi 2 / 5</div>
+        <h3>Détecteur de Mignonnerie</h3>
+        <p class="instruction">Maintiens ton doigt appuyé sur le scanner :</p>
+        <button class="scanner-btn" id="scanBtn" onmousedown="startScan()" onmouseup="endScan()" ontouchstart="startScan()" ontouchend="endScan()">☝️</button>
+        <div class="scanner-progress"><div class="scanner-bar" id="scanBar"></div></div>
+        <p id="scanStatus" class="status-text">En attente de ton empreinte...</p>
+      </div>
+    </section>
+
+    <!-- JEU 3 : MACHINE À RENDEZ-VOUS -->
+    <section class="screen" id="screen-game3">
+      <div class="neu-card text-center">
+        <div class="game-tag">Défi 3 / 5</div>
+        <h3>La Roulette des Dates</h3>
+        <p class="instruction">Tire au sort notre programme parfait !</p>
+        <div class="slots-container">
+          <div class="slot-box" id="slot1">???</div>
+          <div class="slot-box" id="slot2">???</div>
+          <div class="slot-box" id="slot3">???</div>
+        </div>
+        <button class="neu-btn neu-btn-accent" onclick="spinSlots()">Lancer 🎰</button>
+      </div>
+    </section>
+
+    <!-- JEU 4 : PETIT QUIZ -->
+    <section class="screen" id="screen-game4">
+      <div class="neu-card text-center">
+        <div class="game-tag">Défi 4 / 5</div>
+        <h3>Le Quiz d'Amour</h3>
+        <p class="instruction">Qui fait toujours les meilleurs câlins ?</p>
+        <div class="quiz-options">
+          <button class="neu-btn" onclick="checkQuiz(this, true)">Toi (évidemment) 🥰</button>
+          <button class="neu-btn" onclick="checkQuiz(this, true)">Moi (avec amour) 😇</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- JEU 5 : MEMORY DES CŒURS -->
+    <section class="screen" id="screen-game5">
+      <div class="neu-card text-center">
+        <div class="game-tag">Défi 5 / 5</div>
+        <h3>Mémory des Douceurs</h3>
+        <p class="instruction">Retrouve les paires de cœurs identiques !</p>
+        <div class="cards-grid" id="memoryGrid"></div>
+      </div>
+    </section>
+
+    <!-- ÉCRAN FINAL : POÈME + GALERIE DE 10 PHOTOS ANIMÉES -->
+    <section class="screen" id="screen-final">
+      <div class="neu-card final-card">
+        <h2 class="cursive-title">Pour Toi, Mon Amour ❤️</h2>
+        
+        <!-- POÈME -->
+        <div class="poem-container">
+          <p>« Dans l'univers de mes pensées, tu es la plus belle étoile,<br>
+          Chaque jour à tes côtés est une douce toile.<br>
+          Merci d'illuminer ma vie de ton sourire et de ta douceur,<br>
+          Tu es et tu resteras mon plus grand bonheur. »</p>
+        </div>
+
+        <!-- COMPLIMENTS -->
+        <div class="compliments-box">
+          <span>✨ Incroyable</span> • <span>✨ Rayonnante</span> • <span>✨ Unique</span>
+        </div>
+
+        <!-- CARROUSEL INTERACTIF DES 10 PHOTOS -->
+        <div class="gallery-container">
+          <div class="photo-frame">
+            <!-- N'oublie pas de placer tes 10 photos dans le dossier images/ -->
+            <img id="currentPhoto" src="images/photo1.jpg" alt="Notre souvenir" onerror="this.src='https://via.placeholder.com/300x300/bdd8e9/001d39?text=Photo+1'">
+            <div class="photo-counter" id="photoCounter">Photo 1 / 10</div>
+          </div>
+          <div class="gallery-controls">
+            <button class="neu-btn" onclick="changePhoto(-1)">❮ Précédent</button>
+            <button class="neu-btn neu-btn-accent" onclick="changePhoto(1)">Suivant ❯</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
