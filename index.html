@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Pour Mon Amour ❤️</title>
+  <title>Un petit essais pour ma p'tite princesse</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -13,11 +13,11 @@
   <div class="music-bar-fixed">
     <div class="music-info">
       <span class="music-icon">🎵</span>
-      <span class="music-title">Notre Mélodie 💙</span>
+      <span class="music-title">she_goes_by where.t.at</span>
     </div>
     <button class="music-btn" id="musicToggle" onclick="toggleAudio()">▶</button>
   </div>
-  <audio id="bgMusic" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3"></audio>
+  <audio id="bgMusic" loop src="where.t.at_-_she_goes_by.___F.P.T._Radio_📻(256k).mp3"></audio>
 
   <!-- CONTENEUR PRINCIPAL PLEIN ÉCRAN -->
   <main class="app-viewport">
@@ -25,10 +25,13 @@
     <!-- ÉCRAN D'ACCUEIL -->
     <section class="screen active" id="screen-start">
       <div class="neu-card text-center">
-        <div class="big-icon">💙</div>
-        <h2>Bienvenue mon Amour</h2>
-        <p>Une aventure interactive t'attend. Réalise chaque défi pour débloquer ton cadeau final...</p>
-        <button class="neu-btn neu-btn-accent" onclick="startExperience()">Commencer l'Aventure ✨</button>
+        <div class="big-icon">🥷🏽💙</div>
+        <h2>Bienvenue ma p'tite princesse</h2>
+        <p>J'ai voulus essayer quelques choses de nouveau et evidemment j'ai pensé à toi. Et comme on en a parlé la dernière fois, 
+          j'ai décidé de te concocter une toute petite aventure interactive. Réalise chaque petit jeu pour débloquer ton cadeau 
+          final... J'espère 
+          que ça te plairas🥷🏽</p>
+        <button class="neu-btn neu-btn-accent" onclick="startExperience()">Commençons l'Aventure babe ✨</button>
       </div>
     </section>
 
@@ -36,11 +39,12 @@
     <section class="screen" id="screen-game1">
       <div class="neu-card">
         <div class="game-tag">Défi 1 / 5</div>
-        <h3>La Question Piégée</h3>
-        <p class="instruction">Est-ce que tu m'aimes plus que tout au monde ?</p>
+        <h3>La petite question</h3>
+        <p class="instruction">Tu dois surement te dire, qu'est ce qu'il vas me demander encore celui là avec ses pensés toujours 
+          exagérés là. Mais t'en fais pas ma question est toute simple... Est-ce que tu m'aimes plus que tout au monde ?</p>
         <div class="flee-zone" id="fleeContainer">
-          <button class="neu-btn neu-btn-accent" onclick="winGame(1)">OUI ! ❤️</button>
-          <button class="neu-btn" id="btn-no" onmouseover="fleeButton()" onclick="fleeButton()" ontouchstart="fleeButton()">Non 😜</button>
+          <button class="neu-btn neu-btn-accent" onclick="winGame(1)">OUI ! 💙</button>
+          <button class="neu-btn" id="btn-no" onmouseover="fleeButton()" onclick="fleeButton()" ontouchstart="fleeButton()">NON ! 💔</button>
         </div>
       </div>
     </section>
@@ -50,7 +54,8 @@
       <div class="neu-card text-center">
         <div class="game-tag">Défi 2 / 5</div>
         <h3>Détecteur de Mignonnerie</h3>
-        <p class="instruction">Maintiens ton doigt appuyé sur le scanner :</p>
+        <p class="instruction">Maintiens ton doigt appuyé sur le scanner pour qu'on voit à quel point t'es jolie, comme c'est toujours 
+          moi qui le dis, on vas laisser parler les machines pour voir.. Vas y mets ton petit doigt là :</p>
         <button class="scanner-btn" id="scanBtn" onmousedown="startScan()" onmouseup="endScan()" ontouchstart="startScan()" ontouchend="endScan()">☝️</button>
         <div class="scanner-progress"><div class="scanner-bar" id="scanBar"></div></div>
         <p id="scanStatus" class="status-text">En attente de ton empreinte...</p>
@@ -61,8 +66,10 @@
     <section class="screen" id="screen-game3">
       <div class="neu-card text-center">
         <div class="game-tag">Défi 3 / 5</div>
-        <h3>La Roulette des Dates</h3>
-        <p class="instruction">Tire au sort notre programme parfait !</p>
+        <h3>La Roulette de Date</h3>
+        <p class="instruction">Là t'as plusieurs chose pour rendre un peu amusant notre programme pour la sortie, parceque oui, 
+          on feras une sortie  prochainement, on est en vaccances, faut qu'on en profite sinon c'est mort mdr. Alors vas y tire au 
+          sort notre programme parfait !</p>
         <div class="slots-container">
           <div class="slot-box" id="slot1">???</div>
           <div class="slot-box" id="slot2">???</div>
@@ -76,11 +83,13 @@
     <section class="screen" id="screen-game4">
       <div class="neu-card text-center">
         <div class="game-tag">Défi 4 / 5</div>
-        <h3>Le Quiz d'Amour</h3>
-        <p class="instruction">Qui fait toujours les meilleurs câlins ?</p>
+        <h3>Le Quiz de calin</h3>
+        <p class="instruction">Qui fait toujours les meilleurs câlins ? Oui oui c'est bien une question. C'est vrai on en fait pas 
+          tout le temps mais moi j'aime bien et j'essaies de le faire du mieux que je le peux mais bon j'ai voulus avoir ton avis... 
+          Alors ?</p>
         <div class="quiz-options">
-          <button class="neu-btn" onclick="checkQuiz(this, true)">Toi (évidemment) 🥰</button>
-          <button class="neu-btn" onclick="checkQuiz(this, true)">Moi (avec amour) 😇</button>
+          <button class="neu-btn" onclick="checkQuiz(this, true)">Toi (évidemment) 😼</button>
+          <button class="neu-btn" onclick="checkQuiz(this, true)">Moi (avec amour) 🥷🏽</button>
         </div>
       </div>
     </section>
@@ -89,8 +98,10 @@
     <section class="screen" id="screen-game5">
       <div class="neu-card text-center">
         <div class="game-tag">Défi 5 / 5</div>
-        <h3>Mémory des Douceurs</h3>
-        <p class="instruction">Retrouve les paires de cœurs identiques !</p>
+        <h3>Petit jeu de mémoire</h3>
+        <p class="instruction">C'est un jeu que j'adorais joué sur notre premier ordi et meme avec les cartes quand j'étais avec les 
+          camarades à l'école. J'étais très bon en ça tu peux me croire alors j'ai décidé de t'en faire un petit exemple... Alors 
+          retrouve les paires de cœurs identiques !</p>
         <div class="cards-grid" id="memoryGrid"></div>
       </div>
     </section>
@@ -98,7 +109,7 @@
     <!-- ÉCRAN FINAL : POÈME + GALERIE DE 10 PHOTOS ANIMÉES -->
     <section class="screen" id="screen-final">
       <div class="neu-card final-card">
-        <h2 class="cursive-title">Pour Toi, Mon Amour ❤️</h2>
+        <h2 class="cursive-title">Pour toi, ma caraibéénne 🥷🏽💙</h2>
         
         <!-- POÈME -->
         <div class="poem-container">
@@ -110,7 +121,7 @@
 
         <!-- COMPLIMENTS -->
         <div class="compliments-box">
-          <span>✨ Incroyable</span> • <span>✨ Rayonnante</span> • <span>✨ Unique</span>
+          <span>✨ Incroyable</span> • <span>✨ Sexy</span> • <span>✨ Unique</span>
         </div>
 
         <!-- CARROUSEL INTERACTIF DES 10 PHOTOS -->
